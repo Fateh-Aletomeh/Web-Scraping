@@ -9,7 +9,7 @@ def home():
     if cmd == "help":
         help_page()
     elif cmd == "x":
-        print("There are no players with surnames beginning with x.")
+        print("There are no players whose surnames begin with 'x'.")
         home()
     elif 97 <= ord(cmd) <= 122:
         page = requests.get("https://www.basketball-reference.com/players/{}/".format(cmd))
@@ -17,13 +17,13 @@ def home():
 
 
 def help_page():
-    print("Hi.")
+    pass
 
 
 def scrape_letter(page):
     soup = BeautifulSoup(page.text, "html.parser")
 
-    # Finds out the total number of players whose surname begins with the inputed letter
+    # Finds out the total number of players whose surname begins with the inputted letter
     div = soup.find(id="players_sh")
     h2 = div.find("h2").get_text().lower()
     print("\nThere are {}:".format(h2))
@@ -149,7 +149,7 @@ def draw_chart(seasons, stats, data_stat):
                   "ft_per_g": "Free throws per game",
                   "fta_per_g": "Free throw attempts per game",
                   "orb_per_g": "Offensive rebounds per game",
-                  "drb_per_g": "Devensive rebounds per game",
+                  "drb_per_g": "Defensive rebounds per game",
                   "trb_per_g": "Total rebounds per game",
                   "ast_per_g": "Assists per game",
                   "stl_per_g": "Steals per game",
@@ -176,6 +176,7 @@ def draw_chart(seasons, stats, data_stat):
     plt.show()
 
 
-print("Welcome to the NBA players statistic graph generator!")
-print("Type 'help' if you are new and need assistance.")
-home()
+if __name__ == "__main__":
+    print("Welcome to the NBA players statistic graph generator!")
+    print("Type 'help' if you are new and need assistance.")
+    home()
