@@ -22,8 +22,6 @@ def scrapesite(data_stat, webpage):
             except:
                 data.append(0)
 
-    print(seasons)
-    print(data)
     return seasons[::-1], data[::-1]
 
 
@@ -60,8 +58,6 @@ def draw_chart(data_stat, webpage):
              "ft_rate": "Free throws per field goal attempt",
              "off_rtg": "Offensive rating"}
 
-    print(len(seasons))
-    print(len(data))
     plt.bar(seasons, data)
     plt.title(title[data_stat])
     plt.xlabel('Season')
